@@ -1,147 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashenafi Tsegaye Geremew - Portfolio</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f7f6;
-        }
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-            border-radius: 8px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.2em;
-        }
-        header p {
-            margin: 10px 0 0;
-            font-size: 1.1em;
-            color: #bdc3c7;
-        }
-        section {
-            background: #fff;
-            margin: 20px 0;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-            margin-top: 0;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            border: 1px solid #e0e0e0;
-            padding: 15px;
-            border-radius: 6px;
-            background: #fafafa;
-        }
-        .card h3 {
-            margin-top: 0;
-            color: #2980b9;
-        }
-        .skills span {
-            display: inline-block;
-            background: #e1f0fa;
-            color: #2980b9;
-            padding: 5px 12px;
-            margin: 4px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #777;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashenafi Tsegaye Geremew | Portfolio</title>
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #2563eb;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 2.5rem 1.25rem;
+      text-align: center;
+    }
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .profile-pic {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #60a5fa;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+    header h1 { font-size: 1.85rem; margin-bottom: 0.3rem; }
+    header p.subtitle { color: #93c5fd; font-weight: 500; font-size: 1.05rem; margin-bottom: 1rem; }
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+    .contact-bar a { color: #60a5fa; text-decoration: none; }
+    nav {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 0.75rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    nav a:hover { color: var(--accent); }
+    main {
+      max-width: 900px;
+      margin: 1.5rem auto;
+      padding: 0 1rem 3rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    h2 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 0.2rem;
+      margin-bottom: 1rem;
+    }
+    .item { margin-bottom: 1.25rem; }
+    .item:last-child { margin-bottom: 0; }
+    .item-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.25rem;
+    }
+    .item-title { font-weight: 700; font-size: 1.05rem; color: var(--primary); }
+    .item-org { font-weight: 600; color: var(--accent); font-size: 0.95rem; }
+    .item-date { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+    .item p { margin-top: 0.35rem; font-size: 0.95rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+    .tag {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .tag.soft { background: #f1f5f9; color: #334155; border-color: #cbd5e1; }
+    ul.clean-list { padding-left: 1.2rem; }
+    ul.clean-list li { margin-bottom: 0.45rem; font-size: 0.95rem; }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
+  <header>
+    <div class="profile-container">
+      <img src="profile.jpg" alt="Ashenafi Tsegaye Geremew" class="profile-pic" />
+      <div>
         <h1>Ashenafi Tsegaye Geremew</h1>
-        <p>Technical, Operations &amp; Education Specialist</p>
-    </header>
+        <p class="subtitle">Computer Science Graduate | Technical, ICT, Operations &amp; Education Specialist</p>
+      </div>
+      <div class="contact-bar">
+        <span>Kolfe Keranio Sub-City, Addis Ababa, Ethiopia</span>
+        <span>+251 986 581 738</span>
+        <a href="mailto:ashenafietesgaye@gmail.com">ashenafietesgaye@gmail.com</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn: Ashenafie Tesgaye</a>
+      </div>
+    </div>
+  </header>
 
-    <section>
-        <h2>About Me</h2>
-        <p>Multi-disciplinary Computer Science graduate with a strong background spanning electrical maintenance, education, digital operations, and technical problem-solving. Eager to bring adaptability, practical hands-on experience, and strong communication skills to add immediate value to a growing organization.</p>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education &amp; Certifications</a>
+    <a href="#skills">Skills</a>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>Professional Profile</h2>
+      <p>
+        Multi-disciplinary Computer Science graduate (B.Sc.) with practical experience spanning ICT support, software development, education, digital operations, and electrical/hardware maintenance. Certified by Udacity in Artificial Intelligence, Data Analysis, Programming, and Android Development. Passionate about solving real-world problems through technology, structured training, and strong teamwork.
+      </p>
     </section>
 
-    <section>
-        <h2>Featured Work &amp; Experience</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Electrical &amp; Hardware Maintenance</h3>
-                <p>Practical wiring, socket installations, circuit breaker connections, and appliance repairs across residential and construction sites with strict adherence to safety protocols.</p>
-            </div>
-            <div class="card">
-                <h3>Education &amp; Curriculum Delivery</h3>
-                <p>Delivered Performing &amp; Visual Arts and Career &amp; Technical Education for Grades 4–8 at Notre Dame Primary School, alongside personalized freelance academic tutoring.</p>
-            </div>
-            <div class="card">
-                <h3>Digital Media &amp; Online Operations</h3>
-                <p>Managed remote operations, digital project execution, content creation, and audience engagement strategies to build online presence.</p>
-            </div>
+    <section id="experience">
+      <h2>Work Experience</h2>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Apprentice Electrician</span>
+          <span class="item-date">Nov 2024 – Nov 2026</span>
         </div>
-    </section>
+        <div class="item-org">Construction Job Sites</div>
+        <p>Executed practical wiring, socket installations, and circuit breaker connections for construction projects. Performed electrical troubleshooting, maintenance, and appliance repairs alongside senior electricians while following strict site safety procedures.</p>
+      </div>
 
-    <section>
-        <h2>Core Skills</h2>
-        <div class="skills">
-            <span>Programming &amp; Software Dev</span>
-            <span>Database Management</span>
-            <span>Network Fundamentals</span>
-            <span>Hardware &amp; Electrical Troubleshooting</span>
-            <span>Technical Problem-Solving</span>
-            <span>Digital Marketing</span>
-            <span>Classroom Management</span>
-            <span>Project Management</span>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Digital Media &amp; Online Operations Specialist</span>
+          <span class="item-date">Nov 2024 – Nov 2026</span>
         </div>
+        <div class="item-org">Self-Employed / Freelance</div>
+        <p>Managed remote operations, online tasks, and digital project execution. Led social media content creation, digital strategy, and audience engagement to build online presence.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Primary School Teacher (ICT, Career &amp; Technical Education, Arts)</span>
+          <span class="item-date">Nov 2023 – Nov 2025</span>
+        </div>
+        <div class="item-org">Notre Dame Primary School, Addis Ababa</div>
+        <p>Taught basic ICT concepts using visual aids and computer labs, alongside Career &amp; Technical Education and Performing &amp; Visual Arts to Grades 4–8 across 36 weekly periods. Designed engaging lesson plans to strengthen students' practical and creative skills.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Academic Tutor</span>
+          <span class="item-date">Nov 2023 – Nov 2026</span>
+        </div>
+        <div class="item-org">Private / Freelance</div>
+        <p>Provided personalized academic tutoring and mentorship, creating tailored study plans and simplifying complex subjects to improve student grades and comprehension.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Life Skills &amp; Job Ethics Trainee and Office Worker (World Bank Funded)</span>
+          <span class="item-date">Jan 2023 – Jun 2024</span>
+        </div>
+        <div class="item-org">Woreda 08 Administration Office, Kolfe Keranio Sub-City, Addis Ababa</div>
+        <p>Completed structured training in job ethics and life skills, followed by 9 months of practical office administration applying workplace professionalism and operational support.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Volunteer Computer Science Instructor</span>
+          <span class="item-date">Jan 2022 – Jun 2023</span>
+        </div>
+        <div class="item-org">Wollega University</div>
+        <p>Assisted undergraduate students with coursework, programming concepts, and academic development in Computer Science.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">IT Trainer (Internship)</span>
+          <span class="item-date">Jan 2022 – May 2022</span>
+        </div>
+        <div class="item-org">Commercial Bank of Ethiopia</div>
+        <p>Supported bank staff with software configuration, hardware troubleshooting, and day-to-day IT technical assistance.</p>
+      </div>
     </section>
 
-    <section>
-        <h2>Education &amp; Certifications</h2>
-        <ul>
-            <li><strong>B.Sc. in Computer Science</strong> — Wollega University (Graduated July 2023, CGPA: 3.1)</li>
-            <li><strong>Certifications (Mindluster):</strong> Core Computer Science &amp; IT, Electrical &amp; Hardware Maintenance, Digital Marketing &amp; Social Media Management, Project Management</li>
-        </ul>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Internship Management System (Final Year Project)</span>
+          <span class="item-date">2023</span>
+        </div>
+        <div class="item-org">Wollega University</div>
+        <p>Built a web-based platform to digitize and manage university internship programs, enabling students to register online and submit progress reports efficiently.</p>
+      </div>
     </section>
 
-    <section>
-        <h2>Contact</h2>
-        <p><strong>Location:</strong> Addis Ababa, Ethiopia</p>
-        <p><strong>Email:</strong> <a href="mailto:ashenafietsegaye@gmail.com">ashenafietsegaye@gmail.com</a></p>
-        <p><strong>Phone:</strong> +251 986 551 738</p>
+    <section id="education">
+      <h2>Education, Certifications &amp; Awards</h2>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Bachelor of Science (B.Sc.) in Computer Science</span>
+          <span class="item-date">2020 – July 18, 2023</span>
+        </div>
+        <div class="item-org">Wollega University</div>
+        <p>Cumulative GPA: <strong>3.1</strong> | Passed National Exit Examination (July 2023) with <strong>53%</strong>.</p>
+      </div>
+
+      <ul class="clean-list" style="margin-top: 1rem;">
+        <li><strong>AI Fundamentals</strong> — Udacity (2025)</li>
+        <li><strong>Data Analysis Fundamentals</strong> — Udacity (2025)</li>
+        <li><strong>Programming Fundamentals</strong> — Udacity (2025)</li>
+        <li><strong>Android Developer Nanodegree</strong> — Udacity (2024)</li>
+        <li><strong>Media Literacy Certificate</strong> — World Bank (2024)</li>
+        <li><strong>Life Skills &amp; Job Ethics Certification</strong> — World Bank Funded (2024)</li>
+        <li><strong>Certificate of Gratitude</strong> — Wollega University</li>
+        <li><strong>Additional Online Courses</strong> — Mindluster</li>
+      </ul>
     </section>
 
-    <footer>
-        &copy; 2026 Ashenafi Tsegaye Geremew. All rights reserved.
-    </footer>
+    <section id="skills">
+      <h2>Technical &amp; Soft Skills</h2>
+      <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem;">Programming, Software &amp; IT</p>
+      <div class="tags" style="margin-bottom: 1rem;">
+        <span class="tag">C++</span>
+        <span class="tag">Java</span>
+        <span class="tag">C#</span>
+        <span class="tag">HTML &amp; CSS</span>
+        <span class="tag">SQL &amp; MySQL</span>
+        <span class="tag">Git</span>
+        <span class="tag">Android Studio</span>
+        <span class="tag">Arduino</span>
+        <span class="tag">Cisco Packet Tracer</span>
+        <span class="tag">Network Fundamentals</span>
+        <span class="tag">Database Management</span>
+      </div>
+
+      <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem;">Hardware, Electrical &amp; Operations</p>
+      <div class="tags" style="margin-bottom: 1rem;">
+        <span class="tag">Hardware Troubleshooting</span>
+        <span class="tag">Electrical Wiring &amp; Maintenance</span>
+        <span class="tag">Digital Marketing &amp; Social Media</span>
+        <span class="tag">Teaching &amp; Curriculum Design</span>
+        <span class="tag">Project Management</span>
+      </div>
+
+      <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem;">Soft Skills &amp; Languages</p>
+      <div class="tags">
+        <span class="tag soft">Communication</span>
+        <span class="tag soft">Leadership</span>
+        <span class="tag soft">Problem-Solving</span>
+        <span class="tag soft">Critical Thinking</span>
+        <span class="tag soft">Adaptability</span>
+        <span class="tag soft">Time Management</span>
+        <span class="tag soft">Teamwork</span>
+        <span class="tag soft">Emotional Intelligence</span>
+        <span class="tag soft">Amharic</span>
+        <span class="tag soft">English</span>
+        <span class="tag soft">French</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Ashenafi Tsegaye Geremew. All rights reserved.
+  </footer>
 
 </body>
-  </html>
+    </html>
